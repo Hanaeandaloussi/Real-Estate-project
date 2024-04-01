@@ -115,6 +115,17 @@ section {
    box-shadow: var(--box-shodow);
 }
 
+/* .circle {
+   border: 1px solid black;
+   width: 50px;
+   height: 50px;
+   border-radius: 50%;
+   background-color: #ffffff;
+   display: flex;
+   align-items: center;
+
+} */
+
 .header .navbar.nav-1 .flex {
    padding-top: 1rem;
    padding-bottom: 1rem;
