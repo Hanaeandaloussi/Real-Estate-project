@@ -17,7 +17,7 @@ if(isset($_COOKIE['user_id'])){
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>dashboard</title>
+   <title>Dashboard</title>
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
@@ -35,6 +35,19 @@ if(isset($_COOKIE['user_id'])){
    <h1 class="heading">dashboard</h1>
 
    <div class="box-container">
+      <!--  -->
+       <div class="box">
+      <?php
+         $select_messages = $conn->prepare("SELECT * FROM `messages`");
+         $select_messages->execute();
+         $count_messages = $select_messages->rowCount();
+         ?>
+         <h3>
+            <?= $count_messages; ?>
+         </h3>
+         <p>new messages</p>
+         <a href="messages.php" class="btn">view messages</a>
+      </div>
 
       <div class="box">
       <?php
@@ -42,15 +55,15 @@ if(isset($_COOKIE['user_id'])){
          $select_profile->execute([$user_id]);
          $fetch_profile = $select_profile->fetch(PDO::FETCH_ASSOC);
       ?>
-      <h3>welcome!</h3>
+      <h3>Welcome!</h3>
       <p><?= $fetch_profile['name']; ?></p>
-      <a href="update.php" class="btn">update profile</a>
+      <a href="update.php" class="btn">Update profile</a>
       </div>
 
       <div class="box">
-         <h3>filter search</h3>
-         <p>search your dream property</p>
-         <a href="search.php" class="btn">search now</a>
+         <h3>Filter search</h3>
+         <p>Search your dream property</p>
+         <a href="search.php" class="btn">Search now</a>
       </div>
 
       <div class="box">
@@ -96,6 +109,7 @@ if(isset($_COOKIE['user_id'])){
       <p>properties saved</p>
       <a href="saved.php" class="btn">view saved properties</a>
       </div>
+    
 
    </div>
 

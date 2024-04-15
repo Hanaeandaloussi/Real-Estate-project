@@ -1161,6 +1161,7 @@ section {
    background-color: var(--black);
 }
 
+
 .footer .flex {
    display: flex;
    flex-wrap: wrap;
@@ -1169,7 +1170,7 @@ section {
 }
 
 .footer .flex .box {
-   flex: 1 1 30rem;
+   flex: 1em;
 }
 
 .footer .flex .box a {
@@ -1208,7 +1209,7 @@ section {
 }
 
 .footer .credit {
-   padding: 3rem 2rem;
+   padding: 2rem 2rem;
    text-align: center;
    border-top: var(--border);
    font-size: 2rem;
