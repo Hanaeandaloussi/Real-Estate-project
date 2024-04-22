@@ -19,8 +19,8 @@
       </div>
 
       <div class="box">
+         <a href="https://github.com/Hanaeandaloussi"><i class="fab fa-github"><span> GitHub</span></i></a>
          <a href="https://facebook.com/"><i class="fab fa-facebook-f"><span> Facebook</span></i></a>
-         <a href="https://X.com/"><i class="fab fa-twitter"><span> X</span></i></a>
          <a href="https://linkedIn.com/"><i class="fab fa-linkedin"><span> Linkedin</span></i></a>
          <a href="https://instagram.com/"><i class="fab fa-instagram"><span> Instagram</span></i></a>
 

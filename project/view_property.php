@@ -2,13 +2,13 @@
 
 include 'components/connect.php';
 
-if (isset ($_COOKIE['user_id'])) {
+if (isset($_COOKIE['user_id'])) {
    $user_id = $_COOKIE['user_id'];
 } else {
    $user_id = '';
 }
 
-if (isset ($_GET['get_id'])) {
+if (isset($_GET['get_id'])) {
    $get_id = $_GET['get_id'];
 } else {
    $get_id = '';
@@ -66,16 +66,16 @@ if (isset ($_GET['get_id'])) {
                <div class="swiper images-container">
                   <div class="swiper-wrapper">
                      <img src="uploaded_files/<?= $fetch_property['image_01']; ?>" alt="" class="swiper-slide">
-                     <?php if (!empty ($fetch_property['image_02'])) { ?>
+                     <?php if (!empty($fetch_property['image_02'])) { ?>
                         <img src="uploaded_files/<?= $fetch_property['image_02']; ?>" alt="" class="swiper-slide">
                      <?php } ?>
-                     <?php if (!empty ($fetch_property['image_03'])) { ?>
+                     <?php if (!empty($fetch_property['image_03'])) { ?>
                         <img src="uploaded_files/<?= $fetch_property['image_03']; ?>" alt="" class="swiper-slide">
                      <?php } ?>
-                     <?php if (!empty ($fetch_property['image_04'])) { ?>
+                     <?php if (!empty($fetch_property['image_04'])) { ?>
                         <img src="uploaded_files/<?= $fetch_property['image_04']; ?>" alt="" class="swiper-slide">
                      <?php } ?>
-                     <?php if (!empty ($fetch_property['image_05'])) { ?>
+                     <?php if (!empty($fetch_property['image_05'])) { ?>
                         <img src="uploaded_files/<?= $fetch_property['image_05']; ?>" alt="" class="swiper-slide">
                      <?php } ?>
                   </div>
@@ -113,8 +113,7 @@ if (isset ($_GET['get_id'])) {
                      <p><i>rooms :</i><span>
                            <?= $fetch_property['bhk']; ?> BHK
                         </span></p>
-                     <p><i>deposit amount : </i><span><span class=MAD
-                              style="margin-right: .5rem;"></span>
+                     <p><i>deposit amount : </i><span><span class=MAD style="margin-right: .5rem;"></span>
                            <?= $fetch_property['deposite']; ?>
                         </span></p>
                      <p><i>status :</i><span>
@@ -275,76 +274,75 @@ if (isset ($_GET['get_id'])) {
    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
    <?php
    if (isset($_POST['send'])) {
+      $msg_id = create_unique_id();
+      $name = $_POST['name'];
+      $name = filter_var($name, FILTER_SANITIZE_STRING);
+      $email = $_POST['email'];
+      $email = filter_var($email, FILTER_SANITIZE_STRING);
+      $number = $_POST['number'];
+      $number = filter_var($number, FILTER_SANITIZE_STRING);
+      $message = $_POST['message'];
+      $message = filter_var($message, FILTER_SANITIZE_STRING);
+      $receiver = $_POST['receiver'];
+      $receiver = filter_var($receiver, FILTER_SANITIZE_STRING);
 
-   $msg_id = create_unique_id();
-   $name = $_POST['name'];
-   $name = filter_var($name, FILTER_SANITIZE_STRING);
-   $email = $_POST['email'];
-   $email = filter_var($email, FILTER_SANITIZE_STRING);
-   $number = $_POST['number'];
-   $number = filter_var($number, FILTER_SANITIZE_STRING);
-   $message = $_POST['message'];
-   $message = filter_var($message, FILTER_SANITIZE_STRING);
+      $verify_contact = $conn->prepare("SELECT * FROM `messages` WHERE name = ? AND email = ? AND number = ? AND message = ? AND receiver = ?");
+      $verify_contact->execute([$name, $email, $number, $message, $receiver]);
 
-   $verify_contact = $conn->prepare("SELECT * FROM `messages` WHERE name = ? AND email = ? AND number = ? AND message = ?");
-   $verify_contact->execute([$name, $email, $number, $message]);
-
-   if ($verify_contact->rowCount() > 0) {
-      $warning_msg[] = 'message sent already!';
-   } else {
-      $send_message = $conn->prepare("INSERT INTO `messages`(id, name, email, number, message) VALUES(?,?,?,?,?)");
-      $send_message->execute([$msg_id, $name, $email, $number, $message]);
-      $success_msg[] = 'message send successfully!';
+      if ($verify_contact->rowCount() > 0) {
+         $warning_msg[] = 'Message already sent!';
+      } else {
+         $send_message = $conn->prepare("INSERT INTO `messages`(id, name, email, number, message, receiver) VALUES(?,?,?,?,?,?)");
+         $send_message->execute([$msg_id, $name, $email, $number, $message, $receiver]);
+         $success_msg[] = 'Message sent successfully!';
+      }
    }
 
-}
+   ?>
+   <!DOCTYPE html>
+   <html lang="en">
 
-?>
+   <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Contact Us</title>
 
-<!DOCTYPE html>
-<html lang="en">
+      <!-- font awesome cdn link  -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
-<head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Contact Us</title>
+      <!-- custom css file link  -->
+      <link rel="stylesheet" href="css/style.css">
 
-   <!-- font awesome cdn link  -->
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+   </head>
 
-   <!-- custom css file link  -->
-   <link rel="stylesheet" href="css/style.css">
-
-</head>
-
-<body>
+   <body>
 
 
 
-   <!-- contact section starts  -->
+      <!-- contact section starts  -->
 
-   <section class="contact">
+      <section class="contact">
 
-      <div class="row">
-         <div class="image">
-            <img src="images/contact-img.svg" alt="">
+         <div class="row">
+            <div class="image">
+               <img src="images/contact-img.svg" alt="">
+            </div>
+            <form action="" method="post">
+               <h3>get in touch</h3>
+               <input type="text" name="name" required maxlength="50" placeholder="enter your name" class="box">
+               <input type="email" name="email" required maxlength="50" placeholder="enter your email" class="box">
+               <input type="number" name="number" required maxlength="10" max="9999999999" min="0"
+                  placeholder="enter your number" class="box">
+               <textarea name="message" placeholder="enter your message" required maxlength="1000" cols="30" rows="10"
+                  class="box"></textarea>
+               <input type="submit" value="send message" name="send" class="btn">
+            </form>
          </div>
-         <form action="" method="post">
-            <h3>get in touch</h3>
-            <input type="text" name="name" required maxlength="50" placeholder="enter your name" class="box">
-            <input type="email" name="email" required maxlength="50" placeholder="enter your email" class="box">
-            <input type="number" name="number" required maxlength="10" max="9999999999" min="0"
-               placeholder="enter your number" class="box">
-            <textarea name="message" placeholder="enter your message" required maxlength="1000" cols="30" rows="10"
-               class="box"></textarea>
-            <input type="submit" value="send message" name="send" class="btn">
-         </form>
-      </div>
 
-   </section>
+      </section>
 
-   <!-- contact section ends -->
+      <!-- contact section ends -->
 
 
 
@@ -356,16 +354,16 @@ if (isset ($_GET['get_id'])) {
 
 
 
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 
 
-   <!-- custom js file link  -->
-   <script src="js/script.js"></script>
+      <!-- custom js file link  -->
+      <script src="js/script.js"></script>
 
 
-   
+
    </body>
-   
+
    </html>
 
 

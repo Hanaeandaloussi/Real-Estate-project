@@ -18,13 +18,7 @@
 
          <div class="menu">
             <ul>
-               <li><a href="#">My listings<i class="fas fa-angle-down"></i></a>
-                  <ul>
-                     <li><a href="dashboard.php">Dashboard</a></li>
-                     <li><a href="post_property.php">Post property</a></li>
-                     <li><a href="my_listings.php">My listings</a></li>
-                  </ul>
-               </li>
+               <li><a href="dashboard.php">Dashboard<i class="fas fa-angle-down"></i></a></li>
                <li><a href="#">Options<i class="fas fa-angle-down"></i></a>
                   <ul>
                      <li><a href="search.php">Filter search</a></li>

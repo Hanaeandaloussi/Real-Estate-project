@@ -33,19 +33,23 @@ function MyComponent() {
                     <div>
                               <button id="menu-btn" onClick={toggleMenu}>Toggle Menu</button>
                               <div className={`header ${menuActive ? 'active' : ''}`}>
-                                        <div className="menu">Menu Content</div>
+                                        <div className="menu">
+                                                  {/* menu */}
+                                        </div>
                               </div>
                               <input type="number" maxLength="5" onInput={handleInputNumber} />
                               <input type="number" maxLength="5" onInput={handleInputNumber} />
                               <div className="faq">
                                         <div className="box-container">
                                                   <div className="box">
-                                                            <h3 onClick={toggleBox}>FAQ 1</h3>
+                                                            <h3 onClick={toggleBox}>why choose us?</h3>
                                                             <div>FAQ 1 Content</div>
+                                                            <a href="contact.html" class="inline-btn">contact us</a>
                                                   </div>
                                                   <div className="box">
                                                             <h3 onClick={toggleBox}>FAQ 2</h3>
                                                             <div>FAQ 2 Content</div>
+                                                            <a href="contact.html" class="inline-btn">contact us</a>
                                                   </div>
                                         </div>
                               </div>
