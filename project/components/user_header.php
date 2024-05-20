@@ -28,7 +28,9 @@
                <li><a href="#">Help<i class="fas fa-angle-down"></i></a>
                   <ul>
                      <li><a href="about.php">About us</a></i></li>
+                    <li> <a href="components\ChatApp">Message</a></li>
                      <li><a href="contact.php">Contact us</a></i></li>
+
                      <li><a href="contact.php#faq">FAQ</a></i></li>
                   </ul>
                </li>
@@ -41,10 +43,11 @@
                <ul>
                   <li><a href="login.php">Login now</a></li>
                   <li><a href="register.php">Register new</a></li>
-                  <?php if($user_id != ''){ ?>
-                  <li><a href="update.php">Update profile</a></li>
-                  <li><a href="components/user_logout.php" onclick="return confirm('Logout from this website?');">Logout</a>
-                  <?php } ?></li>
+                  <?php if ($user_id != '') { ?>
+                     <li><a href="update.php">Update profile</a></li>
+                     <li><a href="components/user_logout.php"
+                           onclick="return confirm('Logout from this website?');">Logout</a>
+                     <?php } ?></li>
                </ul>
             </li>
          </ul>

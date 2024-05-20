@@ -37,7 +37,7 @@
             <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
             <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
         </taskproperties>
-        <task id="0" name="Idee de projet" color="#99cc00" meeting="false" start="2024-01-29" duration="2" complete="0" thirdDate="2024-01-29" thirdDate-constraint="0" expand="true">
+        <task id="0" name="Idée de projet" color="#99cc00" meeting="false" start="2024-01-29" duration="2" complete="0" thirdDate="2024-01-29" thirdDate-constraint="0" expand="true">
             <depend id="1" type="2" difference="0" hardness="Strong"/>
             <depend id="2" type="2" difference="0" hardness="Strong"/>
         </task>
